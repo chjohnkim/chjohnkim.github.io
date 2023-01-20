@@ -329,6 +329,14 @@
 
   <script>
     function switchStylesheet() {
+      var icon = document.getElementById("icon");
+      if (icon.classList.contains("fa-moon")) {
+        icon.classList.remove("fa-moon");
+        icon.classList.add("fa-sun");
+      } else {
+        icon.classList.remove("fa-sun");
+        icon.classList.add("fa-moon");
+      }
       var stylesheet1 = document.getElementById("light_mode");
       var stylesheet2 = document.getElementById("dark_mode");
       if (stylesheet1.disabled) {
@@ -338,21 +346,13 @@
         stylesheet1.disabled = true;
         stylesheet2.disabled = false;
       }
-      var icon = document.getElementById("icon");
-      if (icon.classList.contains("fa-moon")) {
-        icon.classList.remove("fa-moon");
-        icon.classList.add("fa-sun");
-      } else {
-        icon.classList.remove("fa-sun");
-        icon.classList.add("fa-moon");
-      }
     }
 
     function selectStylesheet() {
-      var stylesheet1 = document.getElementById("dark_mode");
-      var stylesheet2 = document.getElementById("light_mode");
-      stylesheet1.disabled = true;
-      stylesheet2.disabled = false;
+      var stylesheet1 = document.getElementById("light_mode");
+      var stylesheet2 = document.getElementById("dark_mode");
+      stylesheet1.disabled = false;
+      stylesheet2.disabled = true;
     }
   </script>
 
