@@ -129,3 +129,12 @@ name {
 span.highlight {
   background-color: #ffffd0;
 }
+
+.btn {
+  background-color: white;
+  border: none;
+  color: black;
+  padding: 12px 16px;
+  font-size: 20px;
+  cursor: pointer;
+}

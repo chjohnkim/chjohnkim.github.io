@@ -5,28 +5,32 @@
   
   <meta name="author" content="John Kim">
   <meta name="viewport" content="width=device-width, initial-scale=1">
-  
-  <link rel="stylesheet" type="text/css" href="stylesheet.css">
+
+  <link id="dark_mode" rel="stylesheet" type="text/css" href="stylesheet_dark.css" />
+  <link id="light_mode" rel="stylesheet" type="text/css" href="stylesheet.css" />
+  <link rel="stylesheet" href="path/to/fontawesome.min.css">
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@fortawesome/fontawesome-free@5.15.4/css/all.min.css" integrity="sha256-mUZM63G8m73Mcidfrv5E+Y61y7a12O5mW4ezU3bxqW4=" crossorigin="anonymous">
 	<link rel="icon" href="data:image/svg+xml,<svg xmlns=%22http://www.w3.org/2000/svg%22 viewBox=%220 0 100 100%22><text y=%22.9em%22 font-size=%2290%22>🌐</text></svg>">
 </head>
 
-<body>
+<body onload="selectStylesheet()">
   <table style="width:100%;max-width:800px;border:0px;border-spacing:0px;border-collapse:separate;margin-right:auto;margin-left:auto;"><tbody>
     <tr style="padding:0px">
       <td style="padding:0px">
         <table style="width:100%;border:0px;border-spacing:0px;border-collapse:separate;margin-right:auto;margin-left:auto;"><tbody>
           <tr style="padding:0px">
-            <td style="padding:2.5%;width:63%;vertical-align:middle">
+            <button class="btn" onclick="switchStylesheet()"><i class="fa fa-moon" id="icon"></i></button>
+            <td style="padding:2.5%;width:63%;vertical-align:middle">  
               <p style="text-align:center">
                 <name>John (Chung Hee) Kim</name>
               </p>
-              <p>I am a PhD student in the <a href="https://ai.google/research">Robotics Institute</a> 
+              <p>I am a PhD student in the <a href="https://www.ri.cmu.edu/">Robotics Institute</a> 
                 at <a href="https://www.cmu.edu/">Carnegie Mellon University</a>. 
                 I am currently a graduate student researcher in the Agricultural Systems Lab advised by Dr. 
                 <a href="https://www.ri.cmu.edu/ri-faculty/george-a-kantor/">George Kantor</a>.
               </p>
               <p>
-                I received my B.Eng. degree in Mechanical Engineering and M.Phil. degree in Electronic 
+                I received my B.Eng. in Mechanical Engineering and M.Phil. in Electronic 
                 and Computer Engineering from the <a href="https://hkust.edu.hk/">Hong Kong University 
                   of Science and Technology</a>, where I worked as a research assistant in the Robot 
                   Manipulation Lab advised by Dr. <a href="https://sites.google.com/view/js-rml/home">Jungwon Seo</a>.
@@ -44,6 +48,9 @@
             </td>
           </tr>
         </tbody></table>
+
+
+
         <table style="width:100%;border:0px;border-spacing:0px;border-collapse:separate;margin-right:auto;margin-left:auto;"><tbody>
             <tr>
             <td style="padding:20px;width:100%;vertical-align:middle">
@@ -51,14 +58,13 @@
               <p>
                 My research interest lies in the intersection of robotic manipulation, reinforcement learning, and computer vision. 
                 I enjoy solving real world problems by working with robots to develop practical systems and solutions. 
-                Representative papers are <span class="highlight">highlighted</span>.
               </p>
             </td>
           </tr>
         </tbody></table>
         <table style="width:100%;border:0px;border-spacing:0px;border-collapse:separate;margin-right:auto;margin-left:auto;"><tbody>
 				
-          <tr bgcolor="#ffffd0">
+          <tr>
             <td style="padding:20px;width:25%;vertical-align:middle">
               <video width="100%" muted="" autoplay="" loop="">
                 <source src="images/tree_skeletonization.mp4" type="video/mp4">
@@ -111,7 +117,7 @@
             </td>
           </tr>	
 
-          <tr bgcolor="#ffffd0">
+          <tr>
             <td style="padding:20px;width:25%;vertical-align:middle">
               <video width="100%" muted="" autoplay="" loop="">
                 <source src="images/dexterous_ungrasping.mp4" type="video/mp4">
@@ -222,7 +228,7 @@
             </td>
           </tr>	
 
-          <tr bgcolor="#ffffd0">
+          <tr>
             <td style="padding:20px;width:25%;vertical-align:middle">
               <video width="100%" muted="" autoplay="" loop="">
                 <source src="images/shallow_depth_insertion.mp4" type="video/mp4">
@@ -311,7 +317,8 @@
             <td style="padding:0px">
               <br>
               <p style="text-align:right;font-size:small;">
-                Stolen from <a href="https://github.com/jonbarron/jonbarron_website">source code</a>. Last updated January 17, 2023.
+                Stolen from <a href="https://github.com/jonbarron/jonbarron_website">source code</a>. 
+                Last updated January 19, 2023.
               </p>
             </td>
           </tr>
@@ -319,6 +326,35 @@
       </td>
     </tr>
   </table>
-</body>
 
+  <script>
+    function switchStylesheet() {
+      var stylesheet1 = document.getElementById("light_mode");
+      var stylesheet2 = document.getElementById("dark_mode");
+      if (stylesheet1.disabled) {
+        stylesheet1.disabled = false;
+        stylesheet2.disabled = true;
+      } else {
+        stylesheet1.disabled = true;
+        stylesheet2.disabled = false;
+      }
+      var icon = document.getElementById("icon");
+      if (icon.classList.contains("fa-moon")) {
+        icon.classList.remove("fa-moon");
+        icon.classList.add("fa-sun");
+      } else {
+        icon.classList.remove("fa-sun");
+        icon.classList.add("fa-moon");
+      }
+    }
+
+    function selectStylesheet() {
+      var stylesheet1 = document.getElementById("dark_mode");
+      var stylesheet2 = document.getElementById("light_mode");
+      stylesheet1.disabled = true;
+      stylesheet2.disabled = false;
+    }
+  </script>
+
+</body>
 </html>
