@@ -13,20 +13,32 @@
 	<link rel="icon" href="data:image/svg+xml,<svg xmlns=%22http://www.w3.org/2000/svg%22 viewBox=%220 0 100 100%22><text y=%22.9em%22 font-size=%2290%22>🌐</text></svg>">
 </head>
 
+
+<div id="mySidebar" class="sidebar">
+  <a href="javascript:void(0)" class="closebtn" onclick="closeNav()">&times;</a>
+  <a href="#">About</a>
+  <a href="#research">Research</a>
+  <a href="projects/projects.html">Projects</a>
+</div>
+
+<div id="main">
+  <button class="openbtn" onclick="openNav()">&#9776;</button>
+  <button class="btn" onclick="switchStylesheet()"><i class="fa fa-moon" id="icon"></i></button>
+</div>
+
 <body onload="selectStylesheet()">
   <table style="width:100%;max-width:800px;border:0px;border-spacing:0px;border-collapse:separate;margin-right:auto;margin-left:auto;"><tbody>
     <tr style="padding:0px">
       <td style="padding:0px">
         <table style="width:100%;border:0px;border-spacing:0px;border-collapse:separate;margin-right:auto;margin-left:auto;"><tbody>
           <tr style="padding:0px">
-            <button class="btn" onclick="switchStylesheet()"><i class="fa fa-moon" id="icon"></i></button>
             <td style="padding:2.5%;width:63%;vertical-align:middle">  
               <p style="text-align:center">
                 <name>John (Chung Hee) Kim</name>
               </p>
               <p>I am a PhD student in the <a href="https://www.ri.cmu.edu/">Robotics Institute</a> 
                 at <a href="https://www.cmu.edu/">Carnegie Mellon University</a>. 
-                I am currently a graduate student researcher in the <a href="https://frc.ri.cmu.edu/"> Field Robotics Center</a> advised by Dr. 
+                I am currently a graduate student researcher at the <a href="https://labs.ri.cmu.edu/kantorlab/"> Kantor Lab</a> advised by Dr. 
                 <a href="https://www.ri.cmu.edu/ri-faculty/george-a-kantor/">George Kantor</a>.
               </p>
               <p>
@@ -54,7 +66,7 @@
         <table style="width:100%;border:0px;border-spacing:0px;border-collapse:separate;margin-right:auto;margin-left:auto;"><tbody>
             <tr>
             <td style="padding:20px;width:100%;vertical-align:middle">
-              <heading>Research</heading>
+              <heading id="research">Research</heading>
               <p>
                 My research interest lies in the intersection of robotic manipulation, perception, and reinforcement learning. 
                 I enjoy solving real world problems by working with robots to develop practical systems and solutions. 
@@ -298,7 +310,7 @@
         <table width="100%" align="center" border="0" cellspacing="0" cellpadding="20"><tbody>
           <tr>
             <td>
-              <heading>Selected Projects</heading>
+              <heading id="projects">Selected Projects</heading>
             </td>
           </tr>
         </tbody></table>
@@ -353,6 +365,18 @@
       var stylesheet2 = document.getElementById("dark_mode");
       stylesheet1.disabled = false;
       stylesheet2.disabled = true;
+    }
+
+    /* Set the width of the sidebar to 250px and the left margin of the page content to 250px */
+    function openNav() {
+      document.getElementById("mySidebar").style.width = "200px";
+      document.getElementById("main").style.marginLeft = "200px";
+    }
+
+    /* Set the width of the sidebar to 0 and the left margin of the page content to 0 */
+    function closeNav() {
+      document.getElementById("mySidebar").style.width = "0";
+      document.getElementById("main").style.marginLeft = "0";
     }
   </script>
 
