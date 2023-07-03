@@ -1,0 +1,100 @@
+<meta charset="utf-8" emacsmode="-*- markdown -*">
+**Part 5: PointNet: Pointcloud Classification and Segmentation**
+
+<p style="text-align:center">
+    <a style="text-align: center;" href="part4.html">Previous</a> | 
+    <a style="text-align: center;" href="../projects.html">Home</a> | 
+    <a style="text-align: center;" href="part5.html">Next</a>
+</p>    
+
+**Goals:** Understanding and implementing PointNet based architecture for classificatoin and segmentation of point clouds. 
+
+# PointNet
+[PointNet](https://arxiv.org/pdf/1612.00593.pdf) is a deep learning architecture for processing point clouds. 
+Two buliding blocks of PointNet are:
+- **Pooling**: A pooling operation is a simple permutation invariant operator (e.g. max, average, etc)
+- **Pointwise processing**: Applying the same function to each point is trivially permutation equivariant
+Suppose we have a permutation invariant operator **g**. 
+Then **f(g([h(x1), h(x2), ..., h(xn)]))** is also permutation invariant for any **h** or **f**.
+Hence, we can use the following architecture to process point clouds, which trivially represents the PointNet architecture:
+1. **h**: Process points independently (e.g. MLP)
+2. **g**: Pooling operation (e.g. max, average, etc)
+3. **f**: Process global feature (e.g. MLP)
+A final remark is that pointwise output prior to the pooling operation can be used as local embeddings, 
+whereas the output of the pooling operation can be used as global embeddings as shown in the diagram below.
+
+<p style="text-align:center"> 
+<img src="images/pointnet.png">
+</p>
+
+# Pointcloud Classification 
+Pointcloud classification using PointNet is straightforward: 
+pass the global feature through fully connected layers and a softmax layer to obtain the class probabilities.
+
+The test accuracy of the trained model for classifying three classes (chair, vase, lamp) was 96.33%. 
+The following figures show the predicted classes for input point clouds, as well as some failure cases.
+The failure cases are understandable. For example, the chair in the first failure case does not look like a conventional chair,
+and the vase in the second failure case has a long structure which can be mistaken for a lamp. 
+The third failure case can also be explained by the fact that the four protruding structures may represent plants in a vase. 
+
+Class | Example 1 | Example 2 | Example 3 | Failure Case
+:---:|:---:|:---:|:---:|:---:
+**Chair** | <img src="images/cls/cls_0_lab0_pred0.gif"> | <img src="images/cls/cls_80_lab0_pred0.gif"> |<img src="images/cls/cls_160_lab0_pred0.gif"> | <img src="images/cls_wrong/cls_595_lab0_pred1.gif"> 
+**Vase** | <img src="images/cls/cls_640_lab1_pred1.gif"> | <img src="images/cls/cls_660_lab1_pred1.gif"> |<img src="images/cls/cls_710_lab1_pred1.gif"> | <img src="images/cls_wrong/cls_673_lab1_pred2.gif"> 
+**Lamp** | <img src="images/cls/cls_750_lab2_pred2.gif"> | <img src="images/cls/cls_760_lab2_pred2.gif"> |<img src="images/cls/cls_790_lab2_pred2.gif"> | <img src="images/cls_wrong/cls_922_lab2_pred1.gif"> 
+
+
+# Pointcloud Segmentation
+A simple trick is used to perform pointcloud segmentation using PointNet:
+Concatenate the local embedding and the global embedding and pass it through fully connected layers to obtain the class probabilities for each point.
+This is illustrated in the diagram below:
+
+<p style="text-align:center"> 
+<img src="images/pointnet_segmentation.png"> 
+</p>
+
+The test accuracy of the trained model for segmenting six semantic classes for a chair was 90.12%. 
+The following visualizations show the predicted classes for input point clouds, as well as some failure cases.
+Failure Case 4 missclasified the legs of the chair (blue), as the chair is a sofa and doesn't have a clear boundary. 
+For Failure Case 5, the model it seems like the ground truth is not correct by labeling the entire sides as arm rests (yellow) rather than chair legs (blue).
+
+ | Case 1 | Case 2 | Case 3 | Failure Case 4 | Failure Case 5
+:---:|:---:|:---:|:---:|:---:|:---:
+**Ground Truth** | <img src="images/seg/seg_0_gt.gif"> | <img src="images/seg/seg_80_gt.gif"> | <img src="images/seg/seg_160_gt.gif"> |<img src="images/seg_wrong/seg_96_gt.gif"> | <img src="images/seg_wrong/seg_351_gt.gif">  
+**Prediction** | <img src="images/seg/seg_0_pred.gif"> | <img src="images/seg/seg_80_pred.gif"> | <img src="images/seg/seg_160_pred.gif"> |<img src="images/seg_wrong/seg_96_pred.gif"> | <img src="images/seg_wrong/seg_351_pred.gif"> 
+**Accuracy** | 94.65% | 88.90% | 91.79% | 47.53% | 40.85%
+
+
+# Robustness Analysis
+Two experiments were conducted to assess the robustness of a learned model. 
+The first experiment involved rotating the input point clouds at varying angles, 
+and the second experiment involved varying the number of points in the input point clouds. 
+The accuracy of the model was reported in both experiments, 
+and the results were presented quantitatively and qualitatively in the figures provided below. 
+The findings revealed that both classification and segmentation models were similarly sensitive to rotation, 
+with accuracy decreasing linearly as the rotation angle increased. 
+However, the classification model proved more robust to the number of points as compared to the segmentation model. 
+Notably, the accuracy of the classification model remained relatively consistent until the number of points dropped below 100, 
+whereas the segmentation model showed a similar trend when the number of points dropped below 1000.
+
+<p style="text-align:center"> 
+    <img src="images/accuracy_robustness_.png"> 
+</p>
+
+ Case 1 | Case 2 | Case 3 |  Case 1 | Case 2 | Case 3 
+:---:|:---:|:---:|:---:|:---:|:---:|:---:|:---:
+Angle: 0 degrees |  |  | Angle: 60 degrees |  | 
+<img src="images/robustness/rotate_0/seg_0_gt.gif"><img src="images/robustness/rotate_0/seg_0_pred.gif"> | <img src="images/robustness/rotate_0/seg_80_gt.gif"><img src="images/robustness/rotate_0/seg_80_pred.gif">  | <img src="images/robustness/rotate_0/seg_160_gt.gif"><img src="images/robustness/rotate_0/seg_160_pred.gif">  | <img src="images/robustness/rotate_60/seg_0_gt.gif"><img src="images/robustness/rotate_60/seg_0_pred.gif"> | <img src="images/robustness/rotate_60/seg_80_gt.gif"><img src="images/robustness/rotate_60/seg_80_pred.gif">  | <img src="images/robustness/rotate_60/seg_160_gt.gif"><img src="images/robustness/rotate_60/seg_160_pred.gif">  
+ Angle: 120 degrees | |  | Angle: 180 degrees | | 
+<img src="images/robustness/rotate_120/seg_0_gt.gif"><img src="images/robustness/rotate_120/seg_0_pred.gif"> | <img src="images/robustness/rotate_120/seg_80_gt.gif"><img src="images/robustness/rotate_120/seg_80_pred.gif">  | <img src="images/robustness/rotate_120/seg_160_gt.gif"><img src="images/robustness/rotate_120/seg_160_pred.gif">  |  <img src="images/robustness/rotate_180/seg_0_gt.gif"><img src="images/robustness/rotate_180/seg_0_pred.gif"> | <img src="images/robustness/rotate_180/seg_80_gt.gif"><img src="images/robustness/rotate_180/seg_80_pred.gif">  | <img src="images/robustness/rotate_180/seg_160_gt.gif"><img src="images/robustness/rotate_180/seg_160_pred.gif">  
+
+Case 1 | Case 2 | Case 3 |  Case 1 | Case 2 | Case 3 
+:---:|:---:|:---:|:---:|:---:|:---:|:---:|:---:
+ Num Points: 10k  |  |  | Num Points: 1000 |  | 
+<img src="images/robustness/num_points_10000/seg_0_gt.gif"><img src="images/robustness/num_points_10000/seg_0_pred.gif"> | <img src="images/robustness/num_points_10000/seg_80_gt.gif"><img src="images/robustness/num_points_10000/seg_80_pred.gif">  | <img src="images/robustness/num_points_10000/seg_160_gt.gif"><img src="images/robustness/num_points_10000/seg_160_pred.gif">  | <img src="images/robustness/num_points_1000/seg_0_gt.gif"><img src="images/robustness/num_points_1000/seg_0_pred.gif"> | <img src="images/robustness/num_points_1000/seg_80_gt.gif"><img src="images/robustness/num_points_1000/seg_80_pred.gif">  | <img src="images/robustness/num_points_1000/seg_160_gt.gif"><img src="images/robustness/num_points_1000/seg_160_pred.gif"> 
+ Num Points: 500  | |  | Num Points: 100 | | 
+ <img src="images/robustness/num_points_500/seg_0_gt.gif"><img src="images/robustness/num_points_500/seg_0_pred.gif"> | <img src="images/robustness/num_points_500/seg_80_gt.gif"><img src="images/robustness/num_points_500/seg_80_pred.gif">  | <img src="images/robustness/num_points_500/seg_160_gt.gif"><img src="images/robustness/num_points_500/seg_160_pred.gif"> | <img src="images/robustness/num_points_100/seg_0_gt.gif"><img src="images/robustness/num_points_100/seg_0_pred.gif"> | <img src="images/robustness/num_points_100/seg_80_gt.gif"><img src="images/robustness/num_points_100/seg_80_pred.gif">  | <img src="images/robustness/num_points_100/seg_160_gt.gif"><img src="images/robustness/num_points_100/seg_160_pred.gif"> 
+
+
+<!-- Markdeep: --><style class="fallback">body{visibility:hidden;white-space:pre;font-family:monospace}</style><script src="markdeep.min.js" charset="utf-8"></script><script src="https://morgan3d.github.io/markdeep/latest/markdeep.min.js?" charset="utf-8"></script><script>window.alreadyProcessedMarkdeep||(document.body.style.visibility="visible")</script>
+

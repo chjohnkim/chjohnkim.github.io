@@ -1,0 +1,105 @@
+<meta charset="utf-8" emacsmode="-*- markdown -*">
+**Part 3: Differentiable Volume Rendering, Optimizing Implicit Volumes, and Neural Radiance Fields**
+
+<p style="text-align:center">
+    <a style="text-align: center;" href="part2.html">Previous</a> | 
+    <a style="text-align: center;" href="../projects.html">Home</a> | 
+    <a style="text-align: center;" href="part4.html">Next</a>
+</p>    
+
+# Differentiable Volume Rendering
+
+In the emission-absorption (EA) model, volumes are described by their *appearance* (e.g. emission) and *geometry* (absorption) at *every point* in 3D space. 
+In this section, we implement a Differentiable Renderer for EA volumes, which we use in section 2 and 3. 
+Differentiable renderers are extremely useful for 3D learning problems --- one reason is because they allow you to optimize scene parameters (i.e. perform inverse rendering) from image supervision only!
+
+Volume renderer consists of three main components:
+1. **Ray sampling from cameras** which gneerates world space rays from a camera
+2. **Point sampling along rays** which gnereates smaple points along each world space ray
+3. **Rendering** which evalutes a volume function at each sample point along a ray, and aggregates these evaluations to perfrom rendering
+
+## Ray sampling
+The following visualizations show the result of ray sampling from a camera.
+<p style="text-align:center"> 
+<img src="images/xy_grid.png">  <img src="images/rays.png"> 
+</p>
+
+
+## Point sampling
+The point sampler:
+1. Generates a set of distances between a specified minimum and maximum distance
+2. Uses these distances to sample points offset from ray origins along ray directions
+3. Stores the distances and sample points
+
+The following visualization shows point samples from the camera:
+
+<p style="text-align:center"> 
+<img src="images/points.png">
+</p>
+
+## Volume rendering
+The volume renderer evaluates a volume function at each sample point along a ray, and aggregates these evaluations to perfrom rendering.
+The implicit volume function takes in as input a ray bundle and outputs a set of density and rgb values for each sample point along each ray.
+The volume renderer aggregates the density and rgb values to perform rendering using the emission-absorption model, described by the following equation:
+
+<p style="text-align:center"> 
+<img src="images/color.png">
+</p>    
+
+where ***sigma*** is the denisity, ***delta_t*** is the length of current ray segment, and ***L_e*** is the color. Transmittance is given by the following equation:
+
+<p style="text-align:center"> 
+<img src="images/transmittance.png">
+</p>
+
+The following visualization on the left shows the result of rendering a box implicit volume function and the right shows the corresponding depth map:
+
+<p style="text-align:center"> 
+<img src="images/part_1.gif"> <img src="images/part_1_depth.gif"> 
+</p>
+
+# Optimizing a basic implicit volume
+## Random ray sampling
+Now that we have a differentiable volume renderer, we can optimize a basic implicit volume function to fit a target image.
+Depending on how many samples we take for each ray, volume rendering can consume alot of memory on the GPU, hence we sample a subset of rays from a full image for each training iteration.
+
+## Loss and training 
+The loss function used for optimizing the implicit volume function is MSE loss between the rendered image and the target image.
+
+## Visualization
+The following visualization shows the result of optimizing a basic implicit volume function to fit a target image.
+The box center and side lengths are: (0.25, 0.25, -0.0005) and (2.005, 1.504, 1.503) respectively.
+
+<p style="text-align:center"> 
+<img src="images/part_2_.gif">
+</p>
+
+# Optimizing a Neural Radiance Field (NeRF)
+We implement an implicit volume as a Multi-Layer Perceptron (MLP). This MLP maps 3D position to volume density and color. 
+Specifically, the MLP takes in 3D positions from a ray bundle to produce color and density for each sample point in the ray bundle.
+The loss function used for optimizing the NeRF is MSE loss between the rendered image and the target image.
+This implicit volume is used to optimize the lego scene from a set of RGB images as shown below:
+
+<p style="text-align:center"> 
+<img src="images/part_3_128.gif"> 
+</p>
+
+The model structure is illustrated below. Each layer is a fully connected layer with ReLU activation. The output layer for density is a fully connected layer with ReLU activation. The output layer for color is a fully connected layer with sigmoid activation.
+
+<p style="text-align:center"> 
+<img src="images/model_.png">
+</p>
+
+# High Resolution Imagery
+We futher trained the NeRF model on a higher resolution image on the same model architecture as before, and the result is shown below. 
+An interesting observation was that we can use the pretrained model to initialize the weights of the new model and the new model can be trained to produce a higher resolution image.
+The advantage of this approach is that we can reduce the number of training iterations required to produce a high resolution image. 
+
+<p style="text-align:center"> 
+<img src="images/part_4_high_res.gif"> 
+</p>
+
+
+
+<!-- Markdeep: --><style class="fallback">body{visibility:hidden;white-space:pre;font-family:monospace}</style><script src="markdeep.min.js" charset="utf-8"></script><script src="https://morgan3d.github.io/markdeep/latest/markdeep.min.js?" charset="utf-8"></script><script>window.alreadyProcessedMarkdeep||(document.body.style.visibility="visible")</script>
+
