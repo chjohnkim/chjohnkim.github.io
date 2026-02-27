@@ -206,3 +206,15 @@ span.highlight {
 .fab, .fas, .ai {
   color: black;
 }
+
+@media screen and (max-width: 600px) {
+  tr:has(> td > video) {
+    display: flex;
+    flex-direction: column;
+  }
+  tr:has(> td > video) td {
+    width: 100% !important;
+    display: block;
+    box-sizing: border-box;
+  }
+}
