@@ -1,220 +1,434 @@
-/* latin-ext */
-@font-face {
-  font-family: 'Lato';
-  font-style: italic;
-  font-weight: 400;
-  src: local('Lato Italic'), local('Lato-Italic'), url(https://fonts.gstatic.com/s/lato/v15/S6u8w4BMUTPHjxsAUi-qNiXg7eU0.woff2) format('woff2');
-  unicode-range: U+0100-024F, U+0259, U+1E00-1EFF, U+2020, U+20A0-20AB, U+20AD-20CF, U+2113, U+2C60-2C7F, U+A720-A7FF;
-}
-/* latin */
-@font-face {
-  font-family: 'Lato';
-  font-style: italic;
-  font-weight: 400;
-  src: local('Lato Italic'), local('Lato-Italic'), url(https://fonts.gstatic.com/s/lato/v15/S6u8w4BMUTPHjxsAXC-qNiXg7Q.woff2) format('woff2');
-  unicode-range: U+0000-00FF, U+0131, U+0152-0153, U+02BB-02BC, U+02C6, U+02DA, U+02DC, U+2000-206F, U+2074, U+20AC, U+2122, U+2191, U+2193, U+2212, U+2215, U+FEFF, U+FFFD;
-}
-/* latin-ext */
-@font-face {
-  font-family: 'Lato';
-  font-style: italic;
-  font-weight: 700;
-  src: local('Lato Bold Italic'), local('Lato-BoldItalic'), url(https://fonts.gstatic.com/s/lato/v15/S6u_w4BMUTPHjxsI5wq_FQftx9897sxZ.woff2) format('woff2');
-  unicode-range: U+0100-024F, U+0259, U+1E00-1EFF, U+2020, U+20A0-20AB, U+20AD-20CF, U+2113, U+2C60-2C7F, U+A720-A7FF;
-}
-/* latin */
-@font-face {
-  font-family: 'Lato';
-  font-style: italic;
-  font-weight: 700;
-  src: local('Lato Bold Italic'), local('Lato-BoldItalic'), url(https://fonts.gstatic.com/s/lato/v15/S6u_w4BMUTPHjxsI5wq_Gwftx9897g.woff2) format('woff2');
-  unicode-range: U+0000-00FF, U+0131, U+0152-0153, U+02BB-02BC, U+02C6, U+02DA, U+02DC, U+2000-206F, U+2074, U+20AC, U+2122, U+2191, U+2193, U+2212, U+2215, U+FEFF, U+FFFD;
-}
-/* latin-ext */
-@font-face {
-  font-family: 'Lato';
-  font-style: normal;
-  font-weight: 400;
-  src: local('Lato Regular'), local('Lato-Regular'), url(https://fonts.gstatic.com/s/lato/v15/S6uyw4BMUTPHjxAwXiWtFCfQ7A.woff2) format('woff2');
-  unicode-range: U+0100-024F, U+0259, U+1E00-1EFF, U+2020, U+20A0-20AB, U+20AD-20CF, U+2113, U+2C60-2C7F, U+A720-A7FF;
-}
-/* latin */
-@font-face {
-  font-family: 'Lato';
-  font-style: normal;
-  font-weight: 400;
-  src: local('Lato Regular'), local('Lato-Regular'), url(https://fonts.gstatic.com/s/lato/v15/S6uyw4BMUTPHjx4wXiWtFCc.woff2) format('woff2');
-  unicode-range: U+0000-00FF, U+0131, U+0152-0153, U+02BB-02BC, U+02C6, U+02DA, U+02DC, U+2000-206F, U+2074, U+20AC, U+2122, U+2191, U+2193, U+2212, U+2215, U+FEFF, U+FFFD;
-}
-/* latin-ext */
-@font-face {
-  font-family: 'Lato';
-  font-style: normal;
-  font-weight: 700;
-  src: local('Lato Bold'), local('Lato-Bold'), url(https://fonts.gstatic.com/s/lato/v15/S6u9w4BMUTPHh6UVSwaPGQ3q5d0N7w.woff2) format('woff2');
-  unicode-range: U+0100-024F, U+0259, U+1E00-1EFF, U+2020, U+20A0-20AB, U+20AD-20CF, U+2113, U+2C60-2C7F, U+A720-A7FF;
-}
-/* latin */
-@font-face {
-  font-family: 'Lato';
-  font-style: normal;
-  font-weight: 700;
-  src: local('Lato Bold'), local('Lato-Bold'), url(https://fonts.gstatic.com/s/lato/v15/S6u9w4BMUTPHh6UVSwiPGQ3q5d0.woff2) format('woff2');
-  unicode-range: U+0000-00FF, U+0131, U+0152-0153, U+02BB-02BC, U+02C6, U+02DA, U+02DC, U+2000-206F, U+2074, U+20AC, U+2122, U+2191, U+2193, U+2212, U+2215, U+FEFF, U+FFFD;
+/* ===========================
+   STYLESHEET
+   stylesheet.css
+   =========================== */
+
+/* ===== CSS Variables (Light Mode Default) ===== */
+:root {
+  --bg:             #ffffff;
+  --bg-card:        #f7f8fa;
+  --bg-card-hover:  #eff1f5;
+  --text:           #2d2d2d;
+  --text-muted:     #5f6368;
+  --accent:         #1772d0;
+  --accent-hover:   #e07b00;
+  --accent-section: #1772d0;
+  --border:         #e4e6ea;
+  --shadow-sm:      0 1px 4px rgba(0,0,0,0.07);
+  --shadow-md:      0 4px 16px rgba(0,0,0,0.10);
+  --nav-bg:         rgba(255,255,255,0.93);
+  --nav-border:     rgba(0,0,0,0.08);
+  --icon-color:     #2d2d2d;
+  --award-color:    #c62828;
 }
 
-a {
-  color: #1772d0;
-  text-decoration: none;
+/* ===== Dark Mode Variables ===== */
+[data-theme="dark"] {
+  --bg:             #141818;
+  --bg-card:        #1c2020;
+  --bg-card-hover:  #242a2a;
+  --text:           #e0e0e0;
+  --text-muted:     #9aa0a6;
+  --accent:         #90b4e8;
+  --accent-hover:   #f09228;
+  --accent-section: #90b4e8;
+  --border:         #2a3232;
+  --shadow-sm:      0 1px 4px rgba(0,0,0,0.35);
+  --shadow-md:      0 4px 16px rgba(0,0,0,0.45);
+  --nav-bg:         rgba(20,24,24,0.93);
+  --nav-border:     rgba(255,255,255,0.06);
+  --icon-color:     #e0e0e0;
+  --award-color:    #ef9a9a;
 }
 
-a:focus,
-a:hover {
-  color: #f09228;
-  text-decoration: none;
+/* ===== Reset & Base ===== */
+*, *::before, *::after {
+  box-sizing: border-box;
 }
 
-body,
-td,
-th,
-tr,
-p,
-a {
+html {
+  scroll-behavior: smooth;
+}
+
+body {
   font-family: 'Lato', Verdana, Helvetica, sans-serif;
-  font-size: 14px
+  font-size: 15px;
+  line-height: 1.75;
+  background-color: var(--bg);
+  color: var(--text);
+  transition: background-color 0.3s, color 0.3s;
+  padding-top: 60px;
+  margin: 0;
+}
+
+/* ===== Typography ===== */
+a {
+  color: var(--accent);
+  text-decoration: none;
+  transition: color 0.2s;
+}
+
+a:hover, a:focus {
+  color: var(--accent-hover);
+}
+
+p {
+  margin: 0 0 0.75em;
 }
 
 strong {
-  font-family: 'Lato', Verdana, Helvetica, sans-serif;
-  font-size: 14px;
+  font-weight: 700;
 }
 
-heading {
-  font-family: 'Lato', Verdana, Helvetica, sans-serif;
-  font-size: 22px;
+/* ===== Main Container ===== */
+.container {
+  max-width: 860px;
+  margin: 0 auto;
+  padding: 0 1.5rem;
 }
 
-papertitle {
-  font-family: 'Lato', Verdana, Helvetica, sans-serif;
-  font-size: 14px;
-  font-weight: 700
-}
-
-name {
-  font-family: 'Lato', Verdana, Helvetica, sans-serif;
-  font-size: 32px;
-}
-
-.one {
-  width: 160px;
-  height: 160px;
-  position: relative;
-}
-
-.two {
-  width: 160px;
-  height: 160px;
-  position: absolute;
-  transition: opacity .2s ease-in-out;
-  -moz-transition: opacity .2s ease-in-out;
-  -webkit-transition: opacity .2s ease-in-out;
-}
-
-.fade {
-  transition: opacity .2s ease-in-out;
-  -moz-transition: opacity .2s ease-in-out;
-  -webkit-transition: opacity .2s ease-in-out;
-}
-
-span.highlight {
-  background-color: #ffffd0;
-}
-
-.btn {
-  background-color: white;
-  border: none;
-  color: black;
-  padding: 12px 16px;
-  font-size: 20px;
-  cursor: pointer;
-}
-
-/* The sidebar menu */
-.sidebar {
-  height: 100%; /* 100% Full-height */
-  width: 0; /* 0 width - change this with JavaScript */
-  position: fixed; /* Stay in place */
-  z-index: 1; /* Stay on top */
+/* ===== Sticky Navigation ===== */
+.top-nav {
+  position: fixed;
   top: 0;
   left: 0;
-  background-color: #111; /* Black*/
-  overflow-x: hidden; /* Disable horizontal scroll */
-  padding-top: 60px; /* Place content 60px from the top */
-  transition: 0.5s; /* 0.5 second transition effect to slide in the sidebar */
+  right: 0;
+  z-index: 1000;
+  background: var(--nav-bg);
+  backdrop-filter: blur(14px);
+  -webkit-backdrop-filter: blur(14px);
+  border-bottom: 1px solid var(--nav-border);
+  height: 60px;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 0 2rem;
+  transition: background 0.3s;
 }
 
-/* The sidebar links */
-.sidebar a {
-  padding: 8px 8px 8px 32px;
-  text-decoration: none;
-  font-size: 20px;
-  color: #818181;
-  display: block;
-  transition: 0.3s;
+.nav-logo {
+  font-size: 17px;
+  font-weight: 700;
+  color: var(--text);
+  letter-spacing: 0.01em;
+  transition: color 0.2s;
 }
 
-/* When you mouse over the navigation links, change their color */
-.sidebar a:hover {
-  color: #f1f1f1;
+.nav-logo:hover {
+  color: var(--accent-hover);
 }
 
-/* Position and style the close button (top right corner) */
-.sidebar .closebtn {
-  position: absolute;
-  top: 0;
-  right: 25px;
-  font-size: 36px;
-  margin-left: 50px;
+.nav-right {
+  display: flex;
+  align-items: center;
+  gap: 1.5rem;
 }
 
-/* The button used to open the sidebar */
-.openbtn {
-  font-size: 20px;
-  cursor: pointer;
-  background-color: white;
-  color: black;
-  padding: 10px 15px;
+.nav-links {
+  display: flex;
+  list-style: none;
+  margin: 0;
+  padding: 0;
+  gap: 1.75rem;
+}
+
+.nav-links a {
+  font-size: 12px;
+  font-weight: 700;
+  letter-spacing: 0.07em;
+  text-transform: uppercase;
+  color: var(--text-muted);
+  transition: color 0.2s;
+}
+
+.nav-links a:hover {
+  color: var(--accent-hover);
+}
+
+.dark-toggle {
+  background: none;
   border: none;
+  cursor: pointer;
+  color: var(--text-muted);
+  font-size: 15px;
+  padding: 7px 9px;
+  border-radius: 50%;
+  transition: background 0.2s, color 0.2s;
+  line-height: 1;
 }
 
-.openbtn:hover {
-  background-color: #444;
+.dark-toggle:hover {
+  background: var(--bg-card);
+  color: var(--accent-hover);
 }
 
-/* Style page content - use this if you want to push the page content to the right when you open the side navigation */
-#main {
-  transition: margin-left .5s; /* If you want a transition effect */
-  padding: 20px;
+/* ===== Hero / About Section ===== */
+.hero-section {
+  display: flex;
+  align-items: flex-start;
+  gap: 2.5rem;
+  padding: 3rem 0 2.5rem;
 }
 
-/* On smaller screens, where height is less than 450px, change the style of the sidenav (less padding and a smaller font size) */
-@media screen and (max-height: 450px) {
-  .sidebar {padding-top: 15px;}
-  .sidebar a {font-size: 18px;}
+.hero-bio {
+  flex: 1;
 }
 
-.fab, .fas, .ai {
-  color: black;
+.hero-name {
+  font-family: 'Lato', Verdana, Helvetica, sans-serif;
+  font-size: 34px;
+  font-weight: 400;
+  margin: 0 0 1.1rem;
+  color: var(--text);
+  line-height: 1.25;
 }
 
-@media screen and (max-width: 600px) {
-  tr:has(> td > video) {
-    display: flex;
+.social-links {
+  display: flex;
+  gap: 0.25rem;
+  margin-top: 1.25rem;
+  flex-wrap: wrap;
+  justify-content: center;
+}
+
+.social-links a {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 63px;
+  height: 63px;
+  border-radius: 50%;
+  color: var(--icon-color);
+  font-size: 32px;
+  transition: background 0.2s, color 0.2s, transform 0.2s;
+}
+
+.social-links a:hover {
+  background: var(--bg-card);
+  color: var(--accent-hover);
+  transform: translateY(-2px);
+}
+
+.hero-photo {
+  flex: 0 0 260px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 1rem;
+}
+
+.hero-photo > img {
+  width: 100%;
+  border-radius: 50%;
+  border: 3px solid var(--border);
+  box-shadow: var(--shadow-md);
+  transition: border-color 0.3s;
+}
+
+.logo-grid {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 8px;
+  width: 100%;
+}
+
+.logo-grid a {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: 6px;
+  border-radius: 8px;
+  transition: background 0.2s;
+}
+
+.logo-grid a:hover {
+  background: var(--bg-card);
+}
+
+.logo-grid img {
+  width: 100%;
+  height: auto;
+  object-fit: contain;
+  transition: filter 0.3s;
+}
+
+[data-theme="dark"] .logo-grid img {
+  filter: brightness(0) invert(1);
+}
+
+/* ===== Section Headings ===== */
+.content-section {
+  padding: 1.5rem 0 2rem;
+  border-top: 1px solid var(--border);
+}
+
+.section-heading {
+  font-family: 'Lato', Verdana, Helvetica, sans-serif;
+  font-size: 22px;
+  font-weight: 700;
+  color: var(--text);
+  margin: 0 0 0.5rem;
+  padding-left: 0.8rem;
+  border-left: 4px solid var(--accent-section);
+  line-height: 1.3;
+}
+
+.section-desc {
+  color: var(--text-muted);
+  margin-bottom: 1.75rem;
+  font-size: 15px;
+}
+
+/* ===== Paper Cards ===== */
+.paper-card {
+  display: flex;
+  gap: 1.25rem;
+  align-items: center;
+  background: var(--bg-card);
+  border: 1px solid var(--border);
+  border-radius: 12px;
+  padding: 1.25rem;
+  margin-bottom: 1rem;
+  transition: transform 0.2s, box-shadow 0.2s, background-color 0.2s;
+}
+
+.paper-card:hover {
+  transform: translateY(-2px);
+  box-shadow: var(--shadow-md);
+  background: var(--bg-card-hover);
+}
+
+.paper-media {
+  flex: 0 0 150px;
+}
+
+.paper-media video {
+  width: 100%;
+  border-radius: 8px;
+  display: block;
+}
+
+.paper-info {
+  flex: 1;
+  min-width: 0;
+}
+
+.paper-title {
+  font-weight: 700;
+  font-size: 15px;
+  color: var(--text);
+  line-height: 1.4;
+  display: block;
+  margin-bottom: 0.35rem;
+  transition: color 0.2s;
+}
+
+.paper-card a:hover .paper-title {
+  color: var(--accent-hover);
+}
+
+.authors {
+  font-size: 14px;
+  color: var(--text-muted);
+  margin: 0.2rem 0;
+  display: block;
+  line-height: 1.6;
+}
+
+.authors a {
+  color: var(--text-muted);
+}
+
+.authors a:hover {
+  color: var(--accent-hover);
+}
+
+.venue {
+  font-size: 14px;
+  display: block;
+  margin: 0.2rem 0;
+  color: var(--text-muted);
+}
+
+.award {
+  color: var(--award-color) !important;
+  font-weight: 700;
+}
+
+.paper-links {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.4rem;
+  margin: 0.4rem 0;
+}
+
+.paper-links a {
+  font-size: 13px;
+  font-weight: 600;
+}
+
+.paper-desc {
+  font-size: 14px;
+  color: var(--text-muted);
+  margin: 0.4rem 0 0;
+  line-height: 1.6;
+}
+
+/* ===== Footer ===== */
+.site-footer {
+  padding: 1.5rem 0 2rem;
+  text-align: right;
+  font-size: 12px;
+  color: var(--text-muted);
+  border-top: 1px solid var(--border);
+  margin-top: 1rem;
+}
+
+/* ===== Responsive ===== */
+@media screen and (max-width: 640px) {
+  body {
+    font-size: 14px;
+  }
+
+  .hero-section {
+    flex-direction: column;
+    padding: 2rem 0 1.5rem;
+  }
+
+  .hero-photo {
+    order: -1;
+    flex: none;
+    width: min(280px, 80%);
+    align-self: center;
+  }
+
+  .hero-name {
+    font-size: 28px;
+    text-align: center;
+  }
+
+  .social-links {
+    justify-content: center;
+  }
+
+  .paper-card {
     flex-direction: column;
   }
-  tr:has(> td > video) td {
-    width: 100% !important;
-    display: block;
-    box-sizing: border-box;
+
+  .paper-media {
+    flex: none;
+    width: 100%;
+  }
+
+  .nav-links {
+    display: none;
+  }
+
+  .top-nav {
+    padding: 0 1rem;
+  }
+
+  .container {
+    padding: 0 1rem;
   }
 }
