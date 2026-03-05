@@ -13,9 +13,7 @@
   <!-- Prevent flash of wrong theme -->
   <script>
     (function() {
-      var saved = localStorage.getItem('theme');
-      var prefersDark = window.matchMedia('(prefers-color-scheme: dark)').matches;
-      var theme = saved || (prefersDark ? 'dark' : 'light');
+      var theme = 'light';
       document.documentElement.setAttribute('data-theme', theme);
     })();
   </script>
