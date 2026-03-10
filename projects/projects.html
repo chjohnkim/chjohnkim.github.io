@@ -1,128 +1,98 @@
 <!DOCTYPE HTML>
-<html lang="en"><head><meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+<html lang="en">
+<head>
+  <!-- Prevent flash of wrong theme -->
+  <script>
+    (function() {
+      var theme = localStorage.getItem('theme') || 'light';
+      document.documentElement.setAttribute('data-theme', theme);
+    })();
+  </script>
 
-  <title>Projects</title>
-  
+  <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+  <title>Projects | John Kim</title>
   <meta name="author" content="John Kim">
   <meta name="viewport" content="width=device-width, initial-scale=1">
 
-  <link id="dark_mode" rel="stylesheet" type="text/css" href="../stylesheet_dark.css" />
-  <link id="light_mode" rel="stylesheet" type="text/css" href="../stylesheet.css" />
-  <link rel="stylesheet" href="path/to/fontawesome.min.css">
+  <!-- Google Fonts -->
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Lato:ital,wght@0,300;0,400;0,700;1,400;1,700&display=swap" rel="stylesheet">
+
+  <!-- Icons -->
   <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@fortawesome/fontawesome-free@5.15.4/css/all.min.css" integrity="sha256-mUZM63G8m73Mcidfrv5E+Y61y7a12O5mW4ezU3bxqW4=" crossorigin="anonymous">
-	<link rel="icon" href="https://cdn-icons-png.flaticon.com/512/1404/1404642.png">
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/gh/jpswalsh/academicons@1/css/academicons.min.css">
+
+  <link rel="stylesheet" type="text/css" href="../stylesheet.css">
+  <link rel="icon" href="https://cdn-icons-png.flaticon.com/512/1404/1404642.png">
 </head>
 
+<body>
 
-<div id="mySidebar" class="sidebar">
-  <a href="javascript:void(0)" class="closebtn" onclick="closeNav()">&times;</a>
-  <a href="../index.html">About</a>
-  <a href="../index.html#research">Research</a>
-  <a href="projects.html">Projects</a>
-</div>
+  <!-- ===== Sticky Navigation ===== -->
+  <nav class="top-nav">
+    <a class="nav-logo" href="../index.html">John Kim</a>
+    <div class="nav-right">
+      <ul class="nav-links">
+        <li><a href="../index.html">About</a></li>
+        <li><a href="../index.html#research">Research</a></li>
+        <li><a href="projects.html">Projects</a></li>
+        <li><a href="../data/cv.pdf">CV</a></li>
+      </ul>
+      <button class="dark-toggle" onclick="toggleTheme()" title="Toggle dark mode">
+        <i class="fas fa-moon" id="theme-icon"></i>
+      </button>
+    </div>
+  </nav>
 
-<div id="main">
-  <button class="openbtn" onclick="openNav()">&#9776;</button>
-  <button class="btn" onclick="switchStylesheet()"><i class="fa fa-moon" id="icon"></i></button>
-</div>
+  <!-- ===== Main Content ===== -->
+  <main>
+    <div class="container">
 
-<body onload="selectStylesheet()">
-  <table style="width:100%;max-width:800px;border:0px;border-spacing:0px;border-collapse:separate;margin-right:auto;margin-left:auto;"><tbody>
-    <tr style="padding:0px">
-      <td style="padding:0px">
-        <table style="width:100%;border:0px;border-spacing:0px;border-collapse:separate;margin-right:auto;margin-left:auto;"><tbody>
-          <tr style="padding:0px">
-            <td style="padding:2.5%;width:63%;vertical-align:middle">  
-              <p style="text-align:center">
-                <name><b>Projects</b></name>
-              </p>
-              <p style="text-align:center">Curation of selected projects.</p>
-            </td>
-          </tr>
-        </tbody></table>
+      <section class="content-section">
+        <h2 class="section-heading">Projects</h2>
+        <p class="section-desc">Curation of selected projects.</p>
 
+        <div class="paper-card">
+          <div class="paper-media">
+            <video playsinline muted autoplay loop>
+              <source src="l3dv/images/opt_vox.mp4" type="video/mp4">
+            </video>
+          </div>
+          <div class="paper-info">
+            <a href="l3dv/part1.html"><span class="paper-title">Learning-based 3D Computer Vision (2023)</span></a>
+            <p class="paper-desc">
+              This project is a series of course assignments for 16-825
+              <a href="https://learning3d.github.io/">Learning for 3D Vision</a>
+              at Carnegie Mellon University. The course covers 3D computer vision topics ranging
+              from camera models and rendering, to deep learning-based 3D reconstruction,
+              classification, and segmentation. The projects are primarily implemented using PyTorch3D.
+            </p>
+          </div>
+        </div>
 
+      </section>
+    </div>
+  </main>
 
-        <table style="width:100%;border:0px;border-spacing:0px;border-collapse:separate;margin-right:auto;margin-left:auto;"><tbody>
-				
-          <tr>
-            <td style="padding:20px;width:25%;vertical-align:middle">
-              <video playsinline width="100%" muted="" autoplay="" loop="">
-                <source src="l3dv/images/opt_vox.mp4" type="video/mp4">
-                Your browser does not support the video tag.
-              </video>
-            </td>
-            <td style="padding:20px;width:75%;vertical-align:middle">
-              <a href="l3dv/part1.html">
-                <papertitle>Learning-based 3D Computer Vision</papertitle>
-              </a>
-              <br>
-              <p>
-                This project is a series of course assignments for 16-825 <a href="https://learning3d.github.io/">Learning for 3D Vision</a> at Carnegie Mellon University. 
-                The course covers 3D computer vision topics ranging from camera models and rendering, to deep learning-based 3D reconstruction, classification, and segmentation. 
-                The projects are primarily implemented using PyTorch3D.  
-              </p>
-            </td>
-          </tr>		
-          
-        </tbody></table>
-
-					
-        </tbody></table>
-        <table style="width:100%;border:0px;border-spacing:0px;border-collapse:separate;margin-right:auto;margin-left:auto;"><tbody>
-          <tr>
-            <td style="padding:0px">
-              <br>
-              <p style="text-align:right;font-size:small;">
-                Stolen from <a href="https://github.com/jonbarron/jonbarron_website">source code</a>. 
-                Last updated July 3, 2023.
-              </p>
-            </td>
-          </tr>
-        </tbody></table>
-      </td>
-    </tr>
-  </table>
+  <footer class="site-footer">
+    Last updated July 3, 2023.
+  </footer>
 
   <script>
-    function switchStylesheet() {
-      var icon = document.getElementById("icon");
-      if (icon.classList.contains("fa-moon")) {
-        icon.classList.remove("fa-moon");
-        icon.classList.add("fa-sun");
-      } else {
-        icon.classList.remove("fa-sun");
-        icon.classList.add("fa-moon");
-      }
-      var stylesheet1 = document.getElementById("light_mode");
-      var stylesheet2 = document.getElementById("dark_mode");
-      if (stylesheet1.disabled) {
-        stylesheet1.disabled = false;
-        stylesheet2.disabled = true;
-      } else {
-        stylesheet1.disabled = true;
-        stylesheet2.disabled = false;
-      }
+    function updateIcon() {
+      var icon = document.getElementById('theme-icon');
+      var theme = document.documentElement.getAttribute('data-theme');
+      icon.className = theme === 'dark' ? 'fas fa-sun' : 'fas fa-moon';
     }
-
-    function selectStylesheet() {
-      var stylesheet1 = document.getElementById("light_mode");
-      var stylesheet2 = document.getElementById("dark_mode");
-      stylesheet1.disabled = false;
-      stylesheet2.disabled = true;
+    function toggleTheme() {
+      var current = document.documentElement.getAttribute('data-theme');
+      var next = current === 'dark' ? 'light' : 'dark';
+      document.documentElement.setAttribute('data-theme', next);
+      localStorage.setItem('theme', next);
+      updateIcon();
     }
-
-    /* Set the width of the sidebar to 250px and the left margin of the page content to 250px */
-    function openNav() {
-      document.getElementById("mySidebar").style.width = "200px";
-      document.getElementById("main").style.marginLeft = "200px";
-    }
-
-    /* Set the width of the sidebar to 0 and the left margin of the page content to 0 */
-    function closeNav() {
-      document.getElementById("mySidebar").style.width = "0";
-      document.getElementById("main").style.marginLeft = "0";
-    }
+    updateIcon();
   </script>
 
 </body>
