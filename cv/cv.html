@@ -1,0 +1,365 @@
+<!DOCTYPE HTML>
+<html lang="en">
+<head>
+  <!-- Prevent flash of wrong theme -->
+  <script>
+    (function() {
+      var theme = localStorage.getItem('theme') || 'light';
+      document.documentElement.setAttribute('data-theme', theme);
+    })();
+  </script>
+
+  <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+  <title>CV | John Kim</title>
+  <meta name="author" content="John Kim">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+
+  <!-- Google Fonts -->
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Lato:ital,wght@0,300;0,400;0,700;1,400;1,700&display=swap" rel="stylesheet">
+
+  <!-- Icons -->
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@fortawesome/fontawesome-free@5.15.4/css/all.min.css" integrity="sha256-mUZM63G8m73Mcidfrv5E+Y61y7a12O5mW4ezU3bxqW4=" crossorigin="anonymous">
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/gh/jpswalsh/academicons@1/css/academicons.min.css">
+
+  <link rel="stylesheet" type="text/css" href="../stylesheet.css">
+  <link rel="icon" href="https://cdn-icons-png.flaticon.com/512/1404/1404642.png">
+</head>
+
+<body>
+
+  <!-- ===== Sticky Navigation ===== -->
+  <nav class="top-nav">
+    <a class="nav-logo" href="../index.html">John Kim</a>
+    <div class="nav-right">
+      <ul class="nav-links">
+        <li><a href="../index.html">About</a></li>
+        <li><a href="../index.html#research">Research</a></li>
+        <li><a href="../projects/projects.html">Projects</a></li>
+        <li><a href="cv.html">CV</a></li>
+      </ul>
+      <button class="dark-toggle" onclick="toggleTheme()" title="Toggle dark mode">
+        <i class="fas fa-moon" id="theme-icon"></i>
+      </button>
+    </div>
+  </nav>
+
+  <!-- ===== Main Content ===== -->
+  <main>
+    <div class="container">
+
+      <header class="cv-header">
+        <h1 class="cv-name">Chung Hee (<b>John</b>) <b>Kim</b></h1>
+        <div class="cv-contact">
+          <span><i class="fas fa-map-marker-alt"></i> Pittsburgh, PA, USA</span>
+          <span><i class="fas fa-envelope"></i> <a href="mailto:c.h.johnkim@gmail.com">c.h.johnkim@gmail.com</a></span>
+          <!--span><i class="fas fa-phone"></i> +1 412 954 8134</span-->
+          <span><i class="fas fa-globe"></i> <a href="../index.html">chjohnkim.github.io</a></span>
+        </div>
+      </header>
+
+      <!-- ===== Education ===== -->
+      <section class="cv-section">
+        <div class="cv-section-label">Education</div>
+        <div class="cv-section-content">
+          <div class="cv-entry">
+            <div class="cv-entry-row">
+              <span class="cv-entry-title">Carnegie Mellon University</span>
+              <span class="cv-entry-date">Aug 2021 &ndash; Jun 2026</span>
+            </div>
+            <span class="cv-entry-subtitle">Ph.D. in Robotics (Advisor: Dr. George Kantor)</span>
+          </div>
+
+          <div class="cv-entry">
+            <div class="cv-entry-row">
+              <span class="cv-entry-title">The Hong Kong University of Science and Technology</span>
+              <span class="cv-entry-date">Feb 2018 &ndash; Feb 2020</span>
+            </div>
+            <span class="cv-entry-subtitle">M.Phil. in Electronic and Computer Engineering (Advisor: Dr. Jungwon Seo)</span>
+          </div>
+
+          <div class="cv-entry">
+            <div class="cv-entry-row">
+              <span class="cv-entry-title">The Hong Kong University of Science and Technology</span>
+              <span class="cv-entry-date">Sep 2012 &ndash; Dec 2017</span>
+            </div>
+            <span class="cv-entry-subtitle">B.Eng. in Mechanical Engineering (First Class Honors)</span>
+            <div class="cv-entry-note">Overseas Student Exchange Program: <strong>Georgia Institute of Technology</strong></div>
+          </div>
+        </div>
+      </section>
+
+      <!-- ===== Professional Experience ===== -->
+      <section class="cv-section">
+        <div class="cv-section-label">Professional Experience</div>
+        <div class="cv-section-content">
+          <div class="cv-entry">
+            <div class="cv-entry-row">
+              <span class="cv-entry-title">Amazon Robotics</span>
+              <span class="cv-entry-date">May 2025 &ndash; Aug 2025</span>
+            </div>
+            <span class="cv-entry-subtitle">Applied Scientist II Intern &middot; Boston, MA</span>
+            <ul class="cv-bullets">
+              <li>Developed a tactile sensing-driven framework for 3D object reconstruction with robotic hands</li>
+            </ul>
+          </div>
+
+          <div class="cv-entry">
+            <div class="cv-entry-row">
+              <span class="cv-entry-title">Applied Science and Technology Research Institute</span>
+              <span class="cv-entry-date">Aug 2020 &ndash; Jul 2021</span>
+            </div>
+            <span class="cv-entry-subtitle">Engineer &middot; Hong Kong</span>
+            <ul class="cv-bullets">
+              <li>Conducted research on customized synthetic face generation using generative adversarial networks</li>
+              <li>Developed a web application enabling users to submit tasks for execution on a GPU server</li>
+            </ul>
+          </div>
+
+          <div class="cv-entry">
+            <div class="cv-entry-row">
+              <span class="cv-entry-title">XYZ Robotics Inc.</span>
+              <span class="cv-entry-date">Jun 2019 &ndash; Aug 2019</span>
+            </div>
+            <span class="cv-entry-subtitle">Robotics Engineer Intern &middot; Shanghai, China</span>
+            <ul class="cv-bullets">
+              <li>Developed a Mini-ASRS (Automated Storage &amp; Retrieval System) software package for calibration, trajectory planning, and robotic execution</li>
+            </ul>
+          </div>
+        </div>
+      </section>
+
+      <!-- ===== Research Experience ===== -->
+      <section class="cv-section">
+        <div class="cv-section-label">Research Experience</div>
+        <div class="cv-section-content">
+          <div class="cv-entry">
+            <div class="cv-entry-row">
+              <span class="cv-entry-title">Robotics Institute, Carnegie Mellon University</span>
+              <span class="cv-entry-date">Aug 2021 &ndash; Jun 2026</span>
+            </div>
+            <span class="cv-entry-subtitle">Research Assistant &middot; Pittsburgh, PA</span>
+            <ul class="cv-bullets">
+              <li>Research focus: Intelligent robotic manipulation and perception</li>
+              <li>Engineered and deployed an autonomous robotic system for pepper harvesting, applying imitation learning to train manipulation policies</li>
+              <li>Developed an award-winning vision system for reconstructing the 3D branching structure of tree canopies</li>
+            </ul>
+          </div>
+
+          <div class="cv-entry">
+            <div class="cv-entry-row">
+              <span class="cv-entry-title">HKUST Robotics Institute</span>
+              <span class="cv-entry-date">Feb 2018 &ndash; Jun 2020</span>
+            </div>
+            <span class="cv-entry-subtitle">Research Assistant &middot; Hong Kong</span>
+            <ul class="cv-bullets">
+              <li>Research focus: Dexterous robotic manipulation</li>
+              <li>Developed an award-winning dexterous manipulation technique on an industrial robot arm with applications in assembly automation</li>
+            </ul>
+          </div>
+        </div>
+      </section>
+
+      <!-- ===== Publications ===== -->
+      <section class="cv-section">
+        <div class="cv-section-label">Publications &amp; Patents</div>
+        <div class="cv-section-content">
+          <p class="cv-prose">
+            For an up-to-date list of publications, please visit my
+            <a href="https://scholar.google.com/citations?user=18tZI8gAAAAJ&amp;hl=en">Google Scholar</a>
+            profile or the <a href="../index.html#research">Research</a> section of my homepage.
+          </p>
+        </div>
+      </section>
+
+      <!-- ===== Honors & Awards ===== -->
+      <section class="cv-section">
+        <div class="cv-section-label">Honors &amp; Awards</div>
+        <div class="cv-section-content">
+          <div class="cv-line">
+            <span>ICRA 2023 Outstanding Sensors and Perception Paper Award</span>
+            <span class="cv-entry-date">May 2023</span>
+          </div>
+          <div class="cv-line">
+            <span>ICRA 2023 Outstanding Student Paper Finalist</span>
+            <span class="cv-entry-date">May 2023</span>
+          </div>
+          <div class="cv-line">
+            <span>ICRA 2019 Best Paper Award in Robot Manipulation</span>
+            <span class="cv-entry-date">May 2019</span>
+          </div>
+          <div class="cv-line">
+            <span>HKUST Academic Achievement Medal <em>(top 1% of graduates)</em></span>
+            <span class="cv-entry-date">Jun 2017</span>
+          </div>
+        </div>
+      </section>
+
+      <!-- ===== Presentations ===== -->
+      <section class="cv-section">
+        <div class="cv-section-label">Presentations</div>
+        <div class="cv-section-content">
+          <div class="cv-line">
+            <span>ICRA 2024 Oral and Poster Presentation, Yokohama, Japan</span>
+            <span class="cv-entry-date">May 2024</span>
+          </div>
+          <div class="cv-line">
+            <span>ICRA 2023 Oral and Poster Presentation, London</span>
+            <span class="cv-entry-date">May 2023</span>
+          </div>
+          <div class="cv-line">
+            <span>ICRA 2022 Oral and Poster Presentation, Philadelphia, PA</span>
+            <span class="cv-entry-date">May 2022</span>
+          </div>
+          <div class="cv-line">
+            <span>MLCAS 2022 Poster Presentation, Ames, IA</span>
+            <span class="cv-entry-date">Oct 2022</span>
+          </div>
+          <div class="cv-line">
+            <span>ICRA 2019 Oral and Poster Presentation, Montreal, Canada</span>
+            <span class="cv-entry-date">May 2019</span>
+          </div>
+        </div>
+      </section>
+
+      <!-- ===== Teaching ===== -->
+      <section class="cv-section">
+        <div class="cv-section-label">Teaching</div>
+        <div class="cv-section-content">
+          <div class="cv-entry">
+            <div class="cv-entry-row">
+              <span class="cv-entry-title">Robot Localization and Mapping, Teaching Assistant</span>
+              <span class="cv-entry-date">Sep 2023 &ndash; Dec 2023</span>
+            </div>
+            <span class="cv-entry-subtitle">Carnegie Mellon University</span>
+          </div>
+
+          <div class="cv-entry">
+            <div class="cv-entry-row">
+              <span class="cv-entry-title">Computer Vision, Teaching Assistant</span>
+              <span class="cv-entry-date">Jan 2023 &ndash; May 2023</span>
+            </div>
+            <span class="cv-entry-subtitle">Carnegie Mellon University</span>
+          </div>
+
+          <div class="cv-entry">
+            <div class="cv-entry-row">
+              <span class="cv-entry-title">Introduction to Electro-Robot Design, Teaching Assistant</span>
+              <span class="cv-entry-date">Sep 2018 &ndash; May 2019</span>
+            </div>
+            <span class="cv-entry-subtitle">The Hong Kong University of Science and Technology</span>
+          </div>
+        </div>
+      </section>
+
+      <!-- ===== Graduate Coursework ===== -->
+      <section class="cv-section">
+        <div class="cv-section-label">Graduate Coursework</div>
+        <div class="cv-section-content">
+          <div class="cv-course-row">
+            <span class="cv-course-code">CMU 16-825</span>
+            <span class="cv-course-name">Learning for 3D Vision</span>
+            <span class="cv-course-term">Spring 2023</span>
+          </div>
+          <div class="cv-course-row">
+            <span class="cv-course-code">CMU 16-711</span>
+            <span class="cv-course-name">Kinematics, Dynamics, and Control</span>
+            <span class="cv-course-term">Spring 2023</span>
+          </div>
+          <div class="cv-course-row">
+            <span class="cv-course-code">CMU 16-740</span>
+            <span class="cv-course-name">AI for Manipulation</span>
+            <span class="cv-course-term">Fall 2022</span>
+          </div>
+          <div class="cv-course-row">
+            <span class="cv-course-code">CMU 10-715</span>
+            <span class="cv-course-name">Advanced Introduction to Machine Learning</span>
+            <span class="cv-course-term">Fall 2022</span>
+          </div>
+          <div class="cv-course-row">
+            <span class="cv-course-code">CMU 11-785</span>
+            <span class="cv-course-name">Introduction to Deep Learning</span>
+            <span class="cv-course-term">Spring 2022</span>
+          </div>
+          <div class="cv-course-row">
+            <span class="cv-course-code">CMU 16-833</span>
+            <span class="cv-course-name">Robot Localization and Mapping</span>
+            <span class="cv-course-term">Spring 2022</span>
+          </div>
+          <div class="cv-course-row">
+            <span class="cv-course-code">CMU 16-720</span>
+            <span class="cv-course-name">Computer Vision</span>
+            <span class="cv-course-term">Fall 2021</span>
+          </div>
+          <div class="cv-course-row">
+            <span class="cv-course-code">CMU 16-811</span>
+            <span class="cv-course-name">Math Fundamentals for Robotics</span>
+            <span class="cv-course-term">Fall 2021</span>
+          </div>
+          <div class="cv-course-row">
+            <span class="cv-course-code">HKUST ELEC5660</span>
+            <span class="cv-course-name">Introduction to Aerial Robotics</span>
+            <span class="cv-course-term">Spring 2019</span>
+          </div>
+          <div class="cv-course-row">
+            <span class="cv-course-code">HKUST ELEC5640</span>
+            <span class="cv-course-name">Robotic Manipulation</span>
+            <span class="cv-course-term">Fall 2018</span>
+          </div>
+          <div class="cv-course-row">
+            <span class="cv-course-code">HKUST COMP5212</span>
+            <span class="cv-course-name">Machine Learning</span>
+            <span class="cv-course-term">Fall 2018</span>
+          </div>
+          <div class="cv-course-row">
+            <span class="cv-course-code">HKUST ELEC6910</span>
+            <span class="cv-course-name">Robot Perception and Learning</span>
+            <span class="cv-course-term">Spring 2018</span>
+          </div>
+          <div class="cv-course-row">
+            <span class="cv-course-code">HKUST EESM5730</span>
+            <span class="cv-course-name">Modern Control Systems Design</span>
+            <span class="cv-course-term">Spring 2018</span>
+          </div>
+        </div>
+      </section>
+
+      <!-- ===== Skills ===== -->
+      <section class="cv-section">
+        <div class="cv-section-label">Skills</div>
+        <div class="cv-section-content">
+          <p class="cv-prose">
+            <strong>Languages</strong> &nbsp; English <em>(native)</em>, Korean <em>(native)</em>, Mandarin Chinese <em>(conversational)</em>
+          </p>
+          <p class="cv-prose">
+            <strong>Tools</strong> &nbsp; Python, MATLAB, PyTorch, ROS, git, SolidWorks, OnShape, Adobe Photoshop &amp; Illustrator, L<span style="text-transform:none;">a</span>T<span style="text-transform:none;">e</span>X
+          </p>
+        </div>
+      </section>
+
+    </div>
+  </main>
+
+  <footer class="site-footer">
+    Last updated June 16, 2026.
+  </footer>
+
+  <script>
+    function updateIcon() {
+      var icon = document.getElementById('theme-icon');
+      var theme = document.documentElement.getAttribute('data-theme');
+      icon.className = theme === 'dark' ? 'fas fa-sun' : 'fas fa-moon';
+    }
+    function toggleTheme() {
+      var current = document.documentElement.getAttribute('data-theme');
+      var next = current === 'dark' ? 'light' : 'dark';
+      document.documentElement.setAttribute('data-theme', next);
+      localStorage.setItem('theme', next);
+      updateIcon();
+    }
+    updateIcon();
+  </script>
+
+</body>
+</html>
