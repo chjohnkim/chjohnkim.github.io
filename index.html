@@ -13,7 +13,7 @@
   <!-- Prevent flash of wrong theme -->
   <script>
     (function() {
-      var theme = 'light';
+      var theme = localStorage.getItem('theme') || 'light';
       document.documentElement.setAttribute('data-theme', theme);
     })();
   </script>
@@ -22,6 +22,14 @@
   <title>John Kim</title>
   <meta name="author" content="John Kim">
   <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="description" content="John (Chung Hee) Kim is an Applied Scientist at Amazon Robotics. He received his Ph.D. from the Robotics Institute at Carnegie Mellon University, researching robotic manipulation, perception, and machine learning.">
+  <link rel="canonical" href="https://chjohnkim.github.io/">
+  <meta property="og:type" content="website">
+  <meta property="og:title" content="John Kim">
+  <meta property="og:description" content="Applied Scientist at Amazon Robotics. Ph.D. from the CMU Robotics Institute, researching robotic manipulation, perception, and machine learning.">
+  <meta property="og:url" content="https://chjohnkim.github.io/">
+  <meta property="og:image" content="https://chjohnkim.github.io/images/JohnKim_circle2.jpg">
+  <meta name="twitter:card" content="summary">
 
   <!-- Google Fonts -->
   <link rel="preconnect" href="https://fonts.googleapis.com">
@@ -63,12 +71,13 @@
         <div class="hero-bio">
           <h1 class="hero-name"><b>John</b> (Chung Hee) <b>Kim</b></h1>
           <p>
-            I am a PhD candidate in the <a href="https://www.ri.cmu.edu/">Robotics Institute</a>
-            at <a href="https://www.cmu.edu/">Carnegie Mellon University</a>.
-            I work at the <a href="https://labs.ri.cmu.edu/kantorlab/">Kantor Lab</a> advised by Dr.
+            I am an Applied Scientist at <a href="https://www.aboutamazon.com/news/tag/robotics">Amazon Robotics</a>.
+            I received my Ph.D. from the <a href="https://www.ri.cmu.edu/">Robotics Institute</a>
+            at <a href="https://www.cmu.edu/">Carnegie Mellon University</a>, where I worked in the
+            <a href="https://labs.ri.cmu.edu/kantorlab/">Kantor Lab</a> advised by Dr.
             <a href="https://www.ri.cmu.edu/ri-faculty/george-a-kantor/">George Kantor</a>.
-            I was an Applied Scientist Intern at <a href="https://www.aboutamazon.com/news/tag/robotics">Amazon Robotics</a>
-            where I worked with Dr. <a href="https://scholar.google.com/citations?user=csyOsa8AAAAJ&hl=en">Joshua Migdal</a>
+            During my Ph.D., I was an Applied Scientist Intern at Amazon Robotics, where I worked
+            with Dr. <a href="https://scholar.google.com/citations?user=csyOsa8AAAAJ&hl=en">Joshua Migdal</a>
             and Dr. <a href="https://coe.northeastern.edu/people/padir-taskin/">Taskin Padir</a>.
           </p>
           <p>
@@ -87,19 +96,19 @@
         </div>
 
         <div class="hero-photo">
-          <img src="images/JohnKim_circle2.png" alt="Profile photo of John Kim">
+          <img src="images/JohnKim_circle2.jpg" alt="Profile photo of John Kim">
           <div class="logo-grid">
-            <a href="https://www.ri.cmu.edu/">
-              <img src="logos/cmu.png" alt="CMU Robotics Institute">
-            </a>
             <a href="https://www.aboutamazon.com/news/tag/robotics">
               <img src="logos/amazon_robotics.svg" alt="Amazon Robotics">
             </a>
-            <a href="https://hkust.edu.hk/">
-              <img src="logos/hkust_eng.svg" alt="HKUST">
+            <a href="https://www.ri.cmu.edu/">
+              <img src="logos/cmu.png" alt="CMU Robotics Institute">
             </a>
             <a href="https://www.xyzrobotics.com/">
               <img src="logos/xyz_robotics_new.png" alt="XYZ Robotics">
+            </a>
+            <a href="https://hkust.edu.hk/">
+              <img src="logos/hkust_eng.svg" alt="HKUST">
             </a>
           </div>
         </div>
@@ -112,6 +121,30 @@
           My research interest lies in the intersection of robotic manipulation, perception, and machine learning.
           I enjoy solving real world problems by working with robots to develop practical systems and solutions.
         </p>
+
+        <!-- Paper 0 -->
+        <div class="paper-card">
+          <div class="paper-media">
+            <video playsinline muted autoplay loop>
+              <source src="images/tactful.mp4" type="video/mp4">
+            </video>
+          </div>
+          <div class="paper-info">
+            <span class="paper-title">TACTFUL: Tactile-Driven Exploration For Object Localization and Identification in Confined Environments</span>
+            <span class="authors">
+              <a href="https://shivanikamtikar.github.io/">Shivani Kamtikar</a>,
+              <strong>Chung Hee Kim</strong>,
+              <a href="https://scholar.google.com/citations?user=B6o26DoAAAAJ&hl=en">Camilla Tabasso</a>,
+              <a href="https://tyebrady.com/">Tye Brady</a>,
+              <a href="https://scholar.google.com/citations?user=csyOsa8AAAAJ&hl=en">Joshua Migdal</a>,
+              <a href="https://coe.northeastern.edu/people/padir-taskin/">Taskin Padir</a>
+            </span>
+            <span class="venue"><em>IROS 2026</em></span>
+            <p class="paper-desc">
+              We present a vision-free framework that enables a multi-fingered robot to autonomously explore confined workspaces, discover objects through contact, and identify them via tactile reconstruction
+            </p>
+          </div>
+        </div>
 
         <!-- Paper 1 -->
         <div class="paper-card">
@@ -133,7 +166,6 @@
             </span>
             <span class="venue"><em>ICRA 2026</em></span>
             <div class="paper-links">
-              <a href="">[Video]</a>
               <a href="https://arxiv.org/abs/2602.23206">[arXiv]</a>
             </div>
             <p class="paper-desc">
@@ -235,7 +267,7 @@
         <div class="paper-card">
           <div class="paper-media">
             <video playsinline muted autoplay loop>
-              <source src="images/sorghum_model_crop.mov" type="video/mp4">
+              <source src="images/sorghum_model_crop.mp4" type="video/mp4">
             </video>
           </div>
           <div class="paper-info">
@@ -278,7 +310,7 @@
             </span>
             <span class="venue"><em>IEEE RA-L / ICRA 2022</em></span>
             <div class="paper-links">
-              <a href="https://github.com/HKUST-RML/dexterous_ungrasping">[Project Page]</a>
+              <a href="https://github.com/JS-RML/dexterous_ungrasping">[Project Page]</a>
               <a href="https://www.youtube.com/watch?v=KXN6uyKoGSU">[Video]</a>
               <a href="https://www.youtube.com/watch?v=VPg3hR9Tzkg">[Presentation]</a>
               <a href="https://arxiv.org/abs/2108.13580">[arXiv]</a>
@@ -307,7 +339,7 @@
             </span>
             <span class="venue"><em>IEEE RA-L / ICRA 2022</em></span>
             <div class="paper-links">
-              <a href="https://github.com/HKUST-RML/dexterous_ungrasping">[Project Page]</a>
+              <a href="https://github.com/JS-RML/dexterous_ungrasping">[Project Page]</a>
               <a href="https://drive.google.com/file/d/14S4FAJqpunzWU6CMP9YBVUI-ZLwcmQKR/view">[Video]</a>
             </div>
             <p class="paper-desc">
@@ -336,7 +368,7 @@
             </span>
             <span class="venue"><em>IEEE RA-L / ICRA 2021</em></span>
             <div class="paper-links">
-              <a href="https://github.com/HKUST-RML/dig-grasping">[Project Page]</a>
+              <a href="https://github.com/JS-RML/dig-grasping">[Project Page]</a>
               <a href="https://drive.google.com/file/d/1IAQCpvqgRLAM4uCM7dvH3Q9QpxQvuNfO/view">[Video]</a>
             </div>
             <p class="paper-desc">
@@ -394,7 +426,7 @@
               <a href="https://www.ieee-ras.org/awards-recognition/conference-awards/ieee-icra-best-paper-award-on-robot-manipulation-and-locomotion/" class="award">(IEEE ICRA 2019 Best Paper Award in Robot Manipulation)</a>
             </span>
             <div class="paper-links">
-              <a href="https://github.com/HKUST-RML/dexterous_ungrasping">[Project Page]</a>
+              <a href="https://github.com/JS-RML/dexterous_ungrasping">[Project Page]</a>
               <a href="https://www.youtube.com/watch?v=Nka-sCzrcSs">[Video]</a>
               <a href="data/ICRA2019_sdi_poster.pdf">[Poster]</a>
             </div>
@@ -425,7 +457,7 @@
             </span>
             <span class="venue"><em>U.S. Patent No. 11,628,561. 18 April, 2023.</em></span>
             <div class="paper-links">
-              <a href="https://github.com/HKUST-RML/extendable_palm_device">[Project Page]</a>
+              <a href="https://github.com/JS-RML/extendable_palm_device">[Project Page]</a>
             </div>
             <p class="paper-desc">
               A system and method for accurately placing or inserting objects using robotic manipulation is disclosed.
@@ -437,7 +469,7 @@
       <!-- ===== Footer ===== -->
       <footer class="site-footer">
         Revamped from <a href="https://github.com/jonbarron/jonbarron_website">source code</a>.
-        Last updated March 5, 2026.
+        Last updated July 8, 2026.
       </footer>
 
     </div><!-- /.container -->
@@ -466,6 +498,15 @@
 
     // Sync icon with current theme on load
     updateIcon(document.documentElement.getAttribute('data-theme') || 'light');
+
+    // Respect reduced-motion preference: stop autoplay and show controls instead
+    if (window.matchMedia('(prefers-reduced-motion: reduce)').matches) {
+      document.querySelectorAll('video[autoplay]').forEach(function(v) {
+        v.removeAttribute('autoplay');
+        v.pause();
+        v.controls = true;
+      });
+    }
   </script>
 
 </body>

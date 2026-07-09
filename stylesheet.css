@@ -420,8 +420,17 @@ strong {
     width: 100%;
   }
 
-  .nav-links {
+  .nav-logo {
     display: none;
+  }
+
+  .nav-links {
+    gap: 1rem;
+  }
+
+  .nav-links a {
+    font-size: 11px;
+    letter-spacing: 0.04em;
   }
 
   .top-nav {

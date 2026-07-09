@@ -13,6 +13,7 @@
   <title>Projects | John Kim</title>
   <meta name="author" content="John Kim">
   <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="description" content="Selected projects by John (Chung Hee) Kim — robotics, computer vision, and machine learning.">
 
   <!-- Google Fonts -->
   <link rel="preconnect" href="https://fonts.googleapis.com">
@@ -93,6 +94,15 @@
       updateIcon();
     }
     updateIcon();
+
+    // Respect reduced-motion preference: stop autoplay and show controls instead
+    if (window.matchMedia('(prefers-reduced-motion: reduce)').matches) {
+      document.querySelectorAll('video[autoplay]').forEach(function(v) {
+        v.removeAttribute('autoplay');
+        v.pause();
+        v.controls = true;
+      });
+    }
   </script>
 
 </body>
