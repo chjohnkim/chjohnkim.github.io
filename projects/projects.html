@@ -25,7 +25,7 @@
   <link rel="stylesheet" href="https://cdn.jsdelivr.net/gh/jpswalsh/academicons@1/css/academicons.min.css">
 
   <link rel="stylesheet" type="text/css" href="../stylesheet.css">
-  <link rel="icon" href="https://cdn-icons-png.flaticon.com/512/1404/1404642.png">
+  <link rel="icon" type="image/svg+xml" href="../favicon.svg">
 </head>
 
 <body>
@@ -96,11 +96,28 @@
     updateIcon();
 
     // Respect reduced-motion preference: stop autoplay and show controls instead
-    if (window.matchMedia('(prefers-reduced-motion: reduce)').matches) {
+    var reducedMotion = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+    if (reducedMotion) {
       document.querySelectorAll('video[autoplay]').forEach(function(v) {
         v.removeAttribute('autoplay');
         v.pause();
         v.controls = true;
+      });
+    }
+
+    // Scroll-reveal for paper cards
+    if (!reducedMotion && 'IntersectionObserver' in window) {
+      var io = new IntersectionObserver(function(entries) {
+        entries.forEach(function(entry) {
+          if (entry.isIntersecting) {
+            entry.target.classList.add('in-view');
+            io.unobserve(entry.target);
+          }
+        });
+      }, { threshold: 0.1 });
+      document.querySelectorAll('.paper-card').forEach(function(card) {
+        card.classList.add('reveal');
+        io.observe(card);
       });
     }
   </script>
